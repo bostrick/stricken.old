@@ -1,0 +1,25 @@
+
+version: "3"
+services:
+
+  stricken:
+    image: stricken
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/opt/app-root/src
+
+  postgresql:
+
+    image: postgres:9.4
+    environment:
+      POSTGRES_DB: stricken
+      POSTGRES_USER: stricken
+      POSTGRES_PASSWORD: foo
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+volumes:
+   postgres:
